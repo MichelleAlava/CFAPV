@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlumnoCreateDlg" widgetVar="AlumnoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAlumnoTitle}">
+            <h:form id="AlumnoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{alumnoController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_nombresAlumno}" for="nombresAlumno" />
+                        <p:inputText id="nombresAlumno" value="#{alumnoController.selected.nombresAlumno}" title="#{bundle.CreateAlumnoTitle_nombresAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_apellidosAlumno}" for="apellidosAlumno" />
+                        <p:inputText id="apellidosAlumno" value="#{alumnoController.selected.apellidosAlumno}" title="#{bundle.CreateAlumnoTitle_apellidosAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_cedulaAlumno}" for="cedulaAlumno" />
+                        <p:inputMask  mask="999999999-9" id="cedulaAlumno" value="#{alumnoController.selected.cedulaAlumno}" title="#{bundle.CreateAlumnoTitle_cedulaAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_fechaNac}" for="fechaNac" />
+                        <p:calendar id="fechaNac" pattern="MM/dd/yyyy" value="#{alumnoController.selected.fechaNac}" title="#{bundle.EditAlumnoTitle_fechaNac}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_direccionAlumno}" for="direccionAlumno" />
+                        <p:inputText id="direccionAlumno" value="#{alumnoController.selected.direccionAlumno}" title="#{bundle.CreateAlumnoTitle_direccionAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_telefonoAlumno}" for="telefonoAlumno" />
+                        <p:inputMask  mask="9999999999" id="telefonoAlumno" value="#{alumnoController.selected.telefonoAlumno}" title="#{bundle.CreateAlumnoTitle_telefonoAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_emailAlumno}" for="emailAlumno" />
+                        <p:inputText id="emailAlumno" value="#{alumnoController.selected.emailAlumno}" title="#{bundle.CreateAlumnoTitle_emailAlumno}" />
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_fechaInscrip}" for="fechaInscrip" />
+                        <p:calendar id="fechaInscrip" pattern="MM/dd/yyyy" value="#{alumnoController.selected.fechaInscrip}" title="#{bundle.EditAlumnoTitle_fechaInscrip}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_cursoNomPre}" for="cursoNomPre" />
+                        <p:selectOneMenu id="cursoNomPre" value="#{alumnoController.selected.cursoNomPre}" title="#{bundle.CreateAlumnoTitle_cursoNomPre}">
+                            <f:selectItem itemLabel="Selecciona Una" itemValue="" />
+                            <f:selectItem itemLabel="Belleza / $60.00" itemValue="Belleza / $60.00" />
+                            <f:selectItem itemLabel="Cosmetología / $50.00" itemValue="Cosmetología / $50.00" />
+                            <f:selectItem itemLabel="Peluquería / $40.00" itemValue="Peluquería / $40.00" />
+                            <f:selectItem itemLabel="Corte, Confección y Bordado / $50.00" itemValue="Corte, Confección y Bordado / $50.00" />
+                            <f:selectItem itemLabel="Cocina Chef / $80.00" itemValue="Cocina Chef / $80.00" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateAlumnoLabel_cursoHorario}" for="cursoHorario" />
+                        <p:selectOneMenu id="cursoHorario" value="#{alumnoController.selected.cursoHorario}" title="#{bundle.CreateAlumnoTitle_cursoHorario}" >
+                            <f:selectItem itemLabel="Selecciona Una" itemValue="" />
+                            <f:selectItem itemLabel="08:00AM/13:00PM" itemValue="08:00AM/13:00PM" />
+                            <f:selectItem itemLabel="14:00AM/18:00PM" itemValue="14:00AM/18:00PM" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{alumnoController.create}" value="#{bundle.Save}" update="display,:AlumnoListForm:datalist,:growl" oncomplete="handleSubmit(args,'AlumnoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AlumnoCreateDialog.hide()"/>
+                    
+                    
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

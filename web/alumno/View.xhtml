@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <style>
+            #body {
+                background-color: white;
+            }
+
+            p {
+                font-family: Times New Roman;
+                font-size: 20px;
+            }
+            #h3 {
+                font-family: Times New Roman;
+                font-size: 15px;
+                
+            }
+            #h3x {
+                font-family: Times New Roman;
+                font-size: 15px;
+                border-top: 1px solid #AFAFAF;
+            }
+        </style>
+
+        <p:dialog id="AlumnoViewDlg" widgetVar="AlumnoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAlumnoTitle}">
+            <p:scrollPanel mode="native" style="width:680px;height:500px">
+                <h:form id="AlumnoViewForm">
+
+                    <h:panelGroup id="display">
+
+                        <p:outputPanel deferred="true">
+                            <center> 
+                                <h3 id="h3">Centro de Formación Artesanal "Victoria"</h3>
+                                <p:graphicImage url="/resources/images/logocentro.png" style="height: 190px"/>
+                            </center>
+                            
+                            <h2 id="h3x">Datos del Alumno:</h2>
+                        </p:outputPanel>
+                        <center>
+                            <p:panelGrid columns="2" rendered="#{alumnoController.selected != null}" style="width:650px">
+
+                                <center>
+                                    <f:facet  name="header">
+                                        <p:graphicImage url="/resources/images/carnet.png" style="height: 190px"/>
+                                        <br></br>
+                                        <h:outputText value="Pegar foto tamaño Carnet!" />
+                                    </f:facet>
+                                </center>
+
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_nombresAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.nombresAlumno}" title="#{bundle.ViewAlumnoTitle_nombresAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_apellidosAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.apellidosAlumno}" title="#{bundle.ViewAlumnoTitle_apellidosAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_cedulaAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.cedulaAlumno}" title="#{bundle.ViewAlumnoTitle_cedulaAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_fechaNac}"/>
+                                <h:outputText value="#{alumnoController.selected.fechaNac}" title="#{bundle.ViewAlumnoTitle_fechaNac}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_direccionAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.direccionAlumno}" title="#{bundle.ViewAlumnoTitle_direccionAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_telefonoAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.telefonoAlumno}" title="#{bundle.ViewAlumnoTitle_telefonoAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_emailAlumno}"/>
+                                <h:outputText value="#{alumnoController.selected.emailAlumno}" title="#{bundle.ViewAlumnoTitle_emailAlumno}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_fechaInscrip}"/>
+                                <h:outputText value="#{alumnoController.selected.fechaInscrip}" title="#{bundle.ViewAlumnoTitle_fechaInscrip}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_cursoNomPre}"/>
+                                <h:outputText value="#{alumnoController.selected.cursoNomPre}" title="#{bundle.ViewAlumnoTitle_cursoNomPre}"/>
+                                <h:outputText value="#{bundle.ViewAlumnoLabel_cursoHorario}"/>
+                                <h:outputText value="#{alumnoController.selected.cursoHorario}" title="#{bundle.ViewAlumnoTitle_cursoHorario}"/>
+                            </p:panelGrid>
+
+                            <br></br>
+                            <br></br>
+                            <center>
+                                <p:panelGrid columns="2" layout="grid">
+                                    <h:outputText value="___________________________________________" /> 
+                                    <h:outputText value="___________________________________________" />
+                                    <h:outputText value="Firma del Alumno." /> 
+                                    <h:outputText value="Lic. Glenda Saltos VillaPrado." />
+                                </p:panelGrid>
+                            </center>
+
+                        </center>
+                        <p:commandButton value="#{bundle.Close}" onclick="AlumnoViewDialog.hide()"/>
+                        <p:commandButton value="Imprimir" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px">
+                            <p:printer target="AlumnoViewForm" />
+                        </p:commandButton>
+
+                    </h:panelGroup>
+
+                </h:form>
+            </p:scrollPanel>
+        </p:dialog>
+
+    </ui:composition>
+</html>
