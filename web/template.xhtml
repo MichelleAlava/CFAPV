@@ -30,6 +30,28 @@
 
 
     <h:body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: 'fb-root',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v2.10'
+                });
+                FB.AppEvents.logPageView();
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div id="top">
             <ui:insert name="top">
                 <center>
@@ -73,6 +95,7 @@
                             <h1>Encuentranos en:</h1>
                             <a href="https://www.facebook.com/Centro-De-Formaci%C3%B3n-Artesanal-Particular-Victoria-1550977864944956/" target="_blank">
                                 <p:graphicImage value="/resources/images/logofaces2.png" style="height: 120px"/>
+                                <div class="fb-like" data-href="https://www.facebook.com/Centro-De-Formaci%C3%B3n-Artesanal-Particular-Victoria-1550977864944956/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                             </a>
 
                             <br></br>
@@ -82,6 +105,17 @@
                             <a href="https://outlook.live.com/owa/" target="_blank">
                                 <p:graphicImage value="/resources/images/correo.png" style="height: 120px"/>
                             </a>
+
+                            <br></br>
+                            <br></br>
+                            <h1>Clima</h1>
+                            <form>
+                                <div id="cont_9db04fbaebf7224d513be8463567adf4">
+                                    <script type="text/javascript" async="" src="https://www.tiempo.com/wid_loader/9db04fbaebf7224d513be8463567adf4">
+                                    </script>
+                                </div>
+                            </form>
+
                         </center>
                     </h:form>
                 </ui:insert>  
@@ -101,7 +135,7 @@
                 <ui:insert name="cocina" ></ui:insert>
                 <ui:insert name="objetivos" ></ui:insert>
                 <ui:insert name="noticia" ></ui:insert>
-               <!-- insercion de contenidos -->
+                <!-- insercion de contenidos -->
             </div>
         </div>
 

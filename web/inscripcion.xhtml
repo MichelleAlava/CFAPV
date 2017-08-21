@@ -16,10 +16,11 @@
             <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
                 <h:form id="menuForm">
                     <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        
                         <p:submenu label="#{bundle.Maintenance}">
                             <p:menuitem value="Alumno" outcome="/alumno/List.xhtml" />
                         </p:submenu>
+                        <p:menuitem value="Cerrar Sesión" outcome="/Login.xhtml" icon="ui-icon-power"/>
                     </p:menubar>
                 </h:form>
             </p:layoutUnit>

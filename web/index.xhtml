@@ -11,6 +11,7 @@
             <title>Inicio</title>
             <h:outputStylesheet name="css/jsfcrud.css"/>
         </h:head>
+        <script src="resources/js/bloquearpage.js"></script>
         <style>
             body {
                 background-color: white;
@@ -30,7 +31,7 @@
                 font-size: 30px;
             }
         </style>
-        <h:body>
+        <h:body onload="nobackbutton();">
             
             <h:form>
                 <p:outputPanel deferred="true">

@@ -46,7 +46,7 @@
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{alumnoController.update}" value="#{bundle.Save}" update="display,:AlumnoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AlumnoEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="AlumnoEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AlumnoEditDialog.hide()" immediate="true"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
